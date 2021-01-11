@@ -1,24 +1,33 @@
-import React from "react";
-import logo from './logo.svg';
+import React, {useState,useEffect} from "react";
+import axios from "axios";
 import './App.css';
+import RestaurantSummary from "./components/RestaurantSummary";
 
+const API_KEY = process.env.REACT_APP_API_KEY 
 function App() {
+  /* The Apps seems to be on the client side, so therefore there is no need to constantly download the array. Hence storing in restaurantData for a lifetime of an application */
+  let restaurantData = [];
+  const [filteredResults, setfilteredResults ] = useState([]);
+
+  useEffect(()=>{
+    const fetchData = async()=> {
+      const result = await axios(
+        `https://code-challenge.spectrumtoolbox.com/api/restaurants`, {
+          headers: {
+            Authorization: API_KEY,
+          }
+        }
+      )
+      restaurantData = result.data;
+      console.log(restaurantData)
+      setfilteredResults([...restaurantData]);
+    }
+      fetchData();
+  }, [])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    
+     <RestaurantSummary restaurants ={filteredResults}/>
     </div>
   );
 }
