@@ -14,7 +14,10 @@ const Pagination = ({itemCount, pageSize, currentPage, onPageChange}) => {
                 ))}
             
             </div>
-            <div className="page-settings">page {currentPage} of {pageCount}</div>
+            {currentPage <= pageCount ?
+                <div className="page-settings">page {currentPage} of {pageCount}</div> :
+                <div className="page-settings">No Restaurants found</div>
+            }
         </div>
     )
 }

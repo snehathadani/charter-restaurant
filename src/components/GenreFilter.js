@@ -1,8 +1,11 @@
 
 /*Methods for extracting the filter values so we can draw genre checkboxes and apply filters for genres when clicked*/
 const extractor = (data) => {
-    const genres = data.flatMap(e => e.genre.split(','))
-    return [...new Set(genres)]
+    if(data && Array.isArray(data)) {
+        const genres = data.flatMap(e => e.genre.split(','))
+        return [...new Set(genres)]
+    } 
+    return []
 }
 
 const applyFilter = (data, filters) => {

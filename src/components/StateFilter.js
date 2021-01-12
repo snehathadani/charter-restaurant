@@ -1,7 +1,10 @@
 /*Methods for extracting the filter values so we can draw state checkboxes and apply filters for state when clicked*/
 const extractor = (data) => {
-    const states = data.map(e => e.state)
-    return [...new Set(states)]
+    if(data && Array.isArray(data)) {
+        const states = data.map(e => e.state)
+        return [...new Set(states)]
+    }
+    return []
 }
 
 const applyFilter = (data, filters) => {
