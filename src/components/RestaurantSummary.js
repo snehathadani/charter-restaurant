@@ -1,12 +1,12 @@
-import React from "react";
-
 const RestaurantSummary = ({restaurants})=> {
     return(
         <table>
-            <th>Name</th> <th>City</th> <th>State</th> <th>Phone Number</th> <th>Genres</th>
-            
+            <thead>
+                <tr><th>Name</th><th>City</th><th>State</th><th>Phone Number</th><th>Genres</th></tr>
+            </thead>
+            <tbody>
              {restaurants.sort((a, b) => a.name.localeCompare(b.name)).map(restaurant =>{
-                 return (<tr>
+                 return (<tr key={restaurant.id}>
                      <td>{restaurant.name}</td>
                      <td>{restaurant.city}</td>
                      <td>{restaurant.state}</td>
@@ -14,6 +14,7 @@ const RestaurantSummary = ({restaurants})=> {
                      <td>{restaurant.genre}</td>
                  </tr>)
             })}
+            </tbody>
         </table>
     )
 }

@@ -8,7 +8,6 @@ See StateFilter, GenreFilter...
 const Filter = ({data, extractor, applyFilter, filterResults})=> {
     useEffect(() => {
         const columnValues = extractor(data)
-        console.log(columnValues)
         const checkedVals = columnValues.reduce((result, column) => { 
             result[column] = false;
             return result;
