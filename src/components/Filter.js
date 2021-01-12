@@ -13,7 +13,7 @@ const Filter = ({data, extractor, applyFilter, filterResults})=> {
             return result;
         }, {})
         setChecked(checkedVals)
-    }, [data]);
+    }, [data, extractor]);
 
     const [checked, setChecked] = useState({});
 
