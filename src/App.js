@@ -5,6 +5,8 @@ import RestaurantSummary from "./components/RestaurantSummary";
 import Filter from "./components/Filter";
 import {extractor as stateExtractor, applyFilter as applyStateFilter} from "./components/StateFilter"
 import {extractor as genreExtractor, applyFilter as applyGenreFilter} from "./components/GenreFilter"
+import Search from "./components/Search"
+
 
 
 const API_KEY = process.env.REACT_APP_API_KEY 
@@ -68,6 +70,7 @@ function App() {
              extractor={genreExtractor} 
              applyFilter={applyGenreFilter} 
              filterResults={(result) => setFilterResults(result, 'genre')} />
+     <Search data={restaurantData} applySearchCriteria = {(results) => setFilterResults(results, 'search')}/>
      <RestaurantSummary restaurants = {filteredResults}/>
     </div>
   );
