@@ -5,7 +5,7 @@ As things are checked it appies the filter and calls the parent component back w
 The appropriate methods for the columns are included in their own java script files
 See StateFilter, GenreFilter...
 */ 
-const Filter = ({data, extractor, applyFilter, filterResults})=> {
+const Filter = ({data, extractor, applyFilter, header, filterResults})=> {
     useEffect(() => {
         const columnValues = extractor(data)
         const checkedVals = columnValues.reduce((result, column) => { 
@@ -26,14 +26,19 @@ const Filter = ({data, extractor, applyFilter, filterResults})=> {
     }
     
     return (
+        <div>
+            <label className="filter-header">{header}</label>
         <ul>
         {Object.keys(checked).sort().map(column=> 
             <li key={column}>
+                <label>
                 <input type='checkbox' checked = {checked[column]} name = {column} onChange ={() => toggleState(column)}/>
-                <label>{column}</label>
+                <span>{column}</span>
+                </label>
             </li>
         )}
-        </ul>);
+        </ul>
+        </div>);
 }
 
 export default Filter;

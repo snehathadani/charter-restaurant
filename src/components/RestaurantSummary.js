@@ -21,7 +21,7 @@ const RestaurantSummary = ({restaurants})=> {
 
     return(
         <div>
-        <table>
+        <table className='restaurant-summary'>
             <thead>
                 <tr><th>Name</th><th>City</th><th>State</th><th>Phone Number</th><th>Genres</th></tr>
             </thead>

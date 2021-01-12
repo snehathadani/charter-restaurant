@@ -61,17 +61,26 @@ function App() {
   }
 
   return (
-    <div className="App">
-     <Filter data = {restaurantData} 
-             extractor={stateExtractor} 
-             applyFilter={applyStateFilter} 
-             filterResults={(result) => setFilterResults(result, 'state')} />
-     <Filter data = {restaurantData} 
-             extractor={genreExtractor} 
-             applyFilter={applyGenreFilter} 
-             filterResults={(result) => setFilterResults(result, 'genre')} />
-     <Search data={restaurantData} applySearchCriteria = {(results) => setFilterResults(results, 'search')}/>
-     <RestaurantSummary restaurants = {filteredResults}/>
+    <div className="app">
+      <header className="site-header">
+        <Search data={restaurantData} applySearchCriteria = {(results) => setFilterResults(results, 'search')}/>
+      </header>
+      <div className="main">
+        <div className="filters">
+          <Filter data = {restaurantData} 
+              header = "State"
+              extractor={stateExtractor} 
+              applyFilter={applyStateFilter} 
+              filterResults={(result) => setFilterResults(result, 'state')} />
+          <Filter data = {restaurantData} 
+              header = "Genre"
+              extractor={genreExtractor} 
+              applyFilter={applyGenreFilter} 
+              filterResults={(result) => setFilterResults(result, 'genre')} />
+        </div>  
+        <RestaurantSummary restaurants = {filteredResults}/>
+     </div>
+   
     </div>
   );
 }

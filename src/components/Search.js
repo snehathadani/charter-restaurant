@@ -24,10 +24,12 @@ const Search = ({data, applySearchCriteria}) => {
         e.preventDefault()
         applySearchCriteria(data.filter(passFilter))
     }
-    return (<form onSubmit={submitSearch}>
-        <input type="text" name="search" value={searchText} onChange={handleChange}/>
-        <input type="submit" value="Search"/>
-    </form>)
+    return (
+        <form className="search" onSubmit={submitSearch}>
+            <input type="text" name="search" placeholder="Search" value={searchText} onChange={handleChange}/>
+            <input type="submit" value="Search" className="submit"/>
+        </form>
+    )
 }
 
 export default Search
